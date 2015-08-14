@@ -1,4 +1,4 @@
-# jsstats |[![Build Status](https://secure.travis-ci.org/johnotander/jsstats.png?branch=master)](https://travis-ci.org/johnotander/jsstats)
+# jsstats [![Build Status](https://secure.travis-ci.org/johnotander/jsstats.png?branch=master)](https://travis-ci.org/johnotander/jsstats)
 
 Work in progress.
 
