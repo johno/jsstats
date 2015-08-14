@@ -15,7 +15,7 @@ npm install --save jsstats
 ```javascript
 var jsstats = require('jsstats')
 
-jsstats('let foo = 'this is a program')  // => {stats object}
+jsstats('let foo = "this is a program"')  // => {stats object}
 ```
 
 ## Acknowledgements
