@@ -18,6 +18,11 @@ var jsstats = require('jsstats')
 jsstats('let foo = 'this is a program')  // => {stats object}
 ```
 
+## Acknowledgements
+
+* [babel](https://babeljs.io/) for the AST
+* [cssstats](http://cssstats.com) for the inspiration
+
 ## License
 
 MIT
