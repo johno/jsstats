@@ -3,6 +3,9 @@
 var _ = require('lodash')
 var babel = require('babel')
 
+var aggregateByType = require('./lib/aggregate-by-type')
+var aggregateByTypes = require('./lib/aggregate-by-types')
+
 module.exports = function jsstats(jsString) {
   if (typeof jsString !== 'string') {
     throw new TypeError('jsstats expected a string')
@@ -12,24 +15,16 @@ module.exports = function jsstats(jsString) {
 
   return {
     declarations: {
-      total: _.select(ast.program.body, function (obj) {
-        return ['VariableDeclaration', 'FunctionDeclaration'].indexOf(obj.type) !== -1
-      }).length
+      total: aggregateByTypes(ast.program, ['VariableDeclaration', 'FunctionDeclaration'])
     },
     functions: {
-      total: _.select(ast.program.body, function(obj) {
-        return obj.type === 'FunctionDeclaration'
-      }).length
+      total: aggregateByType(ast.program, 'FunctionDeclaration')
     },
     expressions: {
-      total: _.select(ast.program.body, function (obj) {
-        return obj.type === 'ExpressionStatement'
-      }).length
+      total: aggregateByType(ast.program, 'ExpressionStatement') 
     },
     variables: {
-      total: _.select(ast.program.body, function (obj) {
-        return obj.type === 'VariableDeclaration'
-      }).length,
+      total: aggregateByType(ast.program, 'VariableDeclaration'),
       letsOrConsts: Object.keys(ast.program._letReferences).length
     },
     comments: {
