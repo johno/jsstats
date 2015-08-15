@@ -10,6 +10,9 @@
   "scripts": {
     "test": "mocha test"
   },
+  "bin": {
+    "jsstats": "./bin/jsstats.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/johnotander/jsstats.git"
@@ -22,7 +25,8 @@
   "homepage": "https://github.com/johnotander/jsstats",
   "dependencies": {
     "babel": "^5.8.21",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "meow": "^3.3.0"
   },
   "devDependencies": {
     "mocha": "*"
