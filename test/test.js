@@ -21,15 +21,15 @@ describe('jsstats', function() {
     assert.equal(jsstats(smallTestProgram).variables.letsOrConsts, 1)
   })
 
-  it('should count the comment total', function() {
+  it('should count the comment total', function () {
     assert.equal(jsstats(smallTestProgram).comments.total, 3)
   })
 
-  it('should count the total of line comments', function() {
+  it('should count the total of line comments', function () {
     assert.equal(jsstats(smallTestProgram).comments.line, 1)
   })
 
-  it('should count the total of block comments', function() {
+  it('should count the total of block comments', function () {
     assert.equal(jsstats(smallTestProgram).comments.block, 2)
   })
 })
