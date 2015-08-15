@@ -3,7 +3,7 @@
 var assert = require('assert')
 var jsstats = require('..')
 
-var smallTestProgram = 'var foo = true; let bar = "hello"; function hi () { /* says hi */return "hello";i /*! special comment */ } // End hi()'
+var smallTestProgram = 'var foo = true; let bar = "hello"; function hi () { /* says hi */var str = "hello"; return str; /*! special comment */ } // End hi()'
 
 describe('jsstats', function() {
 
@@ -13,8 +13,12 @@ describe('jsstats', function() {
     assert.ok(stats)
   })
 
-  it('should count the number of uses of let', function () {
-    assert.equal(jsstats(smallTestProgram).variables.lets, 1)
+  it('should count the number of variables', function () {
+    assert.equal(jsstats(smallTestProgram).variables.total, 2)
+  })
+
+  it('should count the number of uses of let or consts', function () {
+    assert.equal(jsstats(smallTestProgram).variables.letsOrConsts, 1)
   })
 
   it('should count the comment total', function() {

@@ -9,12 +9,16 @@ module.exports = function jsstats(jsString) {
   }
 
   var ast = babel.transform(jsString).ast
-  // console.log(ast.program)
 
   return {
     declarations: {
       total: _.select(ast.program.body, function (obj) {
         return ['VariableDeclaration', 'FunctionDeclaration'].indexOf(obj.type) !== -1
+      }).length
+    },
+    functions: {
+      total: _.select(ast.program.body, function(obj) {
+        return obj.type === 'FunctionDeclaration'
       }).length
     },
     expressions: {
@@ -23,7 +27,10 @@ module.exports = function jsstats(jsString) {
       }).length
     },
     variables: {
-      lets: Object.keys(ast.program._letReferences).length
+      total: _.select(ast.program.body, function (obj) {
+        return obj.type === 'VariableDeclaration'
+      }).length,
+      letsOrConsts: Object.keys(ast.program._letReferences).length
     },
     comments: {
       total: ast.comments.length,
